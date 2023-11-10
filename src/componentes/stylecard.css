@@ -1,0 +1,248 @@
+.card {
+    width: 250px;
+    height: 270px;
+    background: white;
+    border-radius: 32px;
+    padding: 3px;
+    position: relative;
+    box-shadow: #604b4a30 0px 70px 30px -50px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .card .mail {
+    position: absolute;
+    right: 2rem;
+    top: 1.4rem;
+    background: transparent;
+    border: none;
+    color: #898989;
+    font-weight: bold;
+  }
+  
+  .card .mail svg {
+    stroke: #75a1a8;
+    stroke-width: 3px;
+  }
+  
+  .card .mail svg:hover {
+    stroke: #75a1a8;
+  }
+  
+
+  /* es la que necesito */
+  .card .profile-pic {
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    top: 3px;
+    left: 3px;
+    border-radius: 29px;
+    z-index: 1;
+    border: 0px solid #75a1a8;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+  }
+  
+/*   .card .profile-pic img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    -o-object-position: 0px 0px;
+    object-position: 0px 0px;
+    transition: all 0.5s ease-in-out 0s;
+  } */
+  
+/*   .card .profile-pic svg {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 0px 0px;
+    object-position: 0px 0px;
+    transform-origin: 45% 20%;
+    transition: all 0.5s ease-in-out 0s;
+  } */
+  
+  .card .bottom {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+    background: #103439;
+    top: 70%;
+    border-radius: 29px;
+    z-index: 2;
+    box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px inset;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  }
+  
+  .card .bottom .content {
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 160px;
+  }
+  
+  .card .bottom .content .name {
+    display: block;
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 16px;
+    color: white;
+    font-weight: bold;
+    margin-top: 2%;
+  }
+  
+  .card .bottom .content .about-me {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 0.1rem;
+    text-align: left;
+  }
+  .card .bottom .content .status-actual {
+    display: block;
+    font-size: 0.5rem;
+    text-align: justify;
+    color: white;
+    width: 119px;
+    margin-top: -30px;
+    margin-left: 65px;
+    letter-spacing: -0.5px;
+  }
+
+  .card .bottom .content .status-time {
+    width: 50%;
+    text-align: end;
+    display: block;
+    font-size: 0.6rem;
+    color: white;
+    margin-left: 60%;
+    letter-spacing: -0.5px;
+    line-height: 10px;
+  }
+
+ 
+  .card .bottom .bottom-bottom {
+    position: absolute;
+    bottom: 0; 
+    left: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .card .bottom .bottom-bottom .social-links-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+  }
+  
+  .card .bottom .bottom-bottom .social-links-container svg {
+    height: 1.7rem;
+    fill: white;
+    filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
+  }
+  
+  .card .bottom .bottom-bottom .social-links-container svg:hover {
+    fill: #75a1a8;
+  }
+  
+  .card .bottom .bottom-bottom .button {
+    background: white;
+    color: #75a1a8;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
+      &:focus {
+        border: none;
+      }
+
+      &:active {
+          border: none;
+      }
+  }
+  
+  .card .bottom .bottom-bottom .button:hover {
+    background: #75a1a8;
+    color: white;
+            &:focus {
+                border: none;
+            }
+
+            &:active {
+                border: none;
+            }
+  }
+  
+  .card:hover {
+    border-top-left-radius: 55px;
+  }
+  
+  .card:hover .bottom {
+    top: 20%;
+    border-radius: 80px 29px 29px 29px;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+  }
+  
+  .card:hover .profile-pic {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1;
+    top: 0px;
+    left: -16px;
+    border-radius: 50%;
+    z-index: 3;
+    border: 7px solid #103439;
+    box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
+    transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+  }
+  
+ /*  .card:hover .profile-pic:hover {
+    transform: scale(0.8);
+    border-radius: 50%;
+  } */
+  
+/*   .card:hover .profile-pic img {
+    transform: scale(2.5);
+    margin-top: -25px;
+    -o-object-position: 0px 25px;
+    object-position: 0px 25px;
+    transition: all 0.5s ease-in-out 0.5s;
+  } */
+  
+/*   .card:hover .profile-pic svg {
+    transform: scale(2.5);;
+    transition: all 0.5s ease-in-out 0.5s;
+  }
+ */
+
+  .horizScroll{
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    padding: 20px;
+    background: transparent;
+    white-space: nowrap; /* left align inner boxes */
+    font-size: 0; /* remove gaps */
+  }
+
+  .horizScroll > div{
+    background: transparent;
+    display: inline-block;
+    vertical-align: top; /* due to inline-block */
+    white-space: normal; /* reset */
+    font-size: 16px;      /* reset */
+    text-align: center;
+    border: 10px solid transparent;
+    border-bottom: 0px;
+  }
+  
