@@ -25,6 +25,11 @@ export const AuthProvider = ({ children }) => {
     const [ idbuttonAccion , setIdButtonAccion] = useState('');
     const [ idorden , setIdOrden] = useState('');
     const [ num_operaciones , setNumeroOperaciones] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [isloadingButton, setIsloadingButton] = useState(false);
+
+    
+
 
     
     
@@ -62,9 +67,11 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const handlelogin = () =>{
+        setLoading(true)
                     
         if(cedula == '' || codigo  == ''){
             {cedula ? toast.error('Ingrese Codigo') : toast.error('Ingrese Cedula')  }
+            setLoading(false)
         }else{
             axios
             .post(`${BASE_URL}`, {
@@ -86,13 +93,16 @@ export const AuthProvider = ({ children }) => {
                     setNumeroOperaciones(res.data.operaciones.length)
                     toast.success('Logeado')
                     setUserlogeado(true);
+                    setLoading(false)
                 }else{
                     toast.error('El tecnico no existe o no está asociado al taller de la OT suministrada')
+                    setLoading(false)
                 }
             })
             .catch(e => {
                 toast.error('El tecnico no existe o no está asociado al taller de la OT suministrada')
                 console.log("error conexiones " + e);
+                setLoading(false)
             })
         }
         
@@ -128,6 +138,7 @@ export const AuthProvider = ({ children }) => {
         console.log(cedula)
         console.log(codigo)
         console.log(registro)
+        setIsloadingButton(true)
         setIdButtonAccion(id)
         setIdOrden(orden)
         axios
@@ -143,6 +154,7 @@ export const AuthProvider = ({ children }) => {
                 if (res.data && res.data.confirmar == 'true'){
                     setAbrirModal(true);
                     setContentModal(res.data);
+                    setIsloadingButton(false)
                 }else{
                     axios
                     .post(`${BASE_URL}`, {
@@ -161,6 +173,7 @@ export const AuthProvider = ({ children }) => {
                             operacioness.push(operacion);
                             }
                             setOperaciones(operacioness)
+                            setIsloadingButton(false)
                         }
                     })
                     .catch(e => {
@@ -261,6 +274,8 @@ export const AuthProvider = ({ children }) => {
                 abrirModal,
                 contentmodal,
                 num_operaciones,
+                loading,
+                isloadingButton,
                 handleidbutton,
                 setCedula,
                 setCodigo,

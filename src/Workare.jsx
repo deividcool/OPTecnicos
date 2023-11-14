@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Mechanic from './assets/Mechanic.svg'
 import { AuthContext } from './context/AuthContext';
 import CardServices from './componentes/Card';
@@ -20,8 +20,18 @@ function Workarea() {
         celular,
         num_operaciones,
     } = useContext(AuthContext);
+    const [loadinOperaciones, setLoadingOperaciones] = useState(false)
 
+    useEffect(() => {
+        if (operaciones && operaciones.length > 0) {
+            setLoadingOperaciones(true);
+        } else {
+            setLoadingOperaciones(false);
+        }
+    }, [operaciones]);
+    
 
+    console.log(operaciones)
 
     return (
         <main className='flex flex-col h-auto'>
@@ -61,13 +71,15 @@ function Workarea() {
                 <section className='flex pt-0 flex-col w-screen bg-white'>
                     <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Área Laboral - Numero Ordenes {num_operaciones} </h2>
                     <div className='h-px w-20 bg-gray-800'></div>
-
-                    <div className="horizScroll">
-                        {operaciones && operaciones.map((item) => (
-                            <CardServices key={item.id_operacion} operaciones={item.id_operacion} nombre_operacion={item.nombre_operacion} buttonstatus={item.botones} status_operacion={item.estado_actual} tiempo_transcurrido={item.tiempo_transcurrido} contar_tiempo={item.contar_tiempo} />
-                        ))}
-                    </div>
-
+                    {loadinOperaciones ? (
+                        <div className="horizScroll">
+                            {operaciones && operaciones.map((item) => (
+                                <CardServices key={item.id_operacion} operaciones={item.id_operacion} nombre_operacion={item.nombre_operacion} buttonstatus={item.botones} status_operacion={item.estado_actual} tiempo_transcurrido={item.tiempo_transcurrido} contar_tiempo={item.contar_tiempo} />
+                            ))}                    
+                        </div>
+                    ):(
+                        <span className='text-center text-xl text-slate-900 mt-8'>cargando...</span>
+                    )}
                 </section>
             </main>
 

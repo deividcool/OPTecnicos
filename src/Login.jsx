@@ -19,6 +19,7 @@ function Login() {
     handlelogin,
     cedula,
     setCedula,
+    loading,
     codigo,
     setCodigo,
     handleCodigoChange,
@@ -75,9 +76,25 @@ function Login() {
                             className='flex w-full bg-white text-zinc-800 text-left justify-start items-start border border-blue-300 rounded-lg p-2 focus:outline-none focus:border-blue-500'
                         />
                     </div>
-                    <div className='flex w-full h-16 mt-px rounded-md pl-2 pr-2 flex-col justify-evenly'>
-                        <button type="submit" onClick={handlelogin} className='bg-sky-600 h-10 rounded-lg border-none'>
-                            <span>INGRESAR</span>
+                    <div className='flex w-full h-16 mt-px rounded-md pl-2 pr-2 flex-col justify-center'>
+                        <button 
+                            type="submit" 
+                            onClick={handlelogin} 
+                            className='bg-sky-600 h-10 rounded-lg border-none flex justify-center items-center'
+                            disabled={loading}    
+                        >
+                            
+                            {loading ? (                    
+                                <svg
+                                    className="animate-spin h-5 w-5 rounded-full"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 2.99988V5.99988M12 20.9999V17.9999M4.20577 16.4999L6.80385 14.9999M21 11.9999H18M16.5 19.7941L15 17.196M3 11.9999H6M7.5 4.20565L9 6.80373M7.5 19.7941L9 17.196M19.7942 16.4999L17.1962 14.9999M4.20577 7.49988L6.80385 8.99988" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            ) : (
+                                <span>INGRESAR</span>
+                            )}
+
                         </button>
                     </div>
                 </div>
