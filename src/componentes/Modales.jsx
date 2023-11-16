@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import './stylecard.css';
 import { AuthContext } from '../context/AuthContext';
 
-function ModalCambioStatus() {
+export function ModalCambioStatus() {
     const [motivoSeleccionado, setMotivoSeleccionado] = useState('');
     const {
         abrirModal,
@@ -87,11 +87,11 @@ function ModalCambioStatus() {
                         )}
                     </section>
                     {contentmodal.multiple == "false" ? (
-                        <button onClick={() => handleconfirmarmotivopausa(motivoSeleccionado)} className='absolute bottom-2 right-2 m-auto bg-cyan-400 p-1 pt-0 pb-0 outline-none rounded-lg uppercase'>
+                        <button onClick={() => handleconfirmarmotivopausa(motivoSeleccionado)} className='absolute bottom-2 right-2 m-auto bg-cyan-400 p-1 outline-none rounded-md uppercase text-slate-50 font-extrabold text-xs'>
                             <span className='text-xs text-white'>confirmar</span>
                         </button>
                     ) : (
-                        <button onClick={() => handleconfirmarmotivopausa(motivosSeleccionados)} className='absolute bottom-2 right-2 m-auto bg-cyan-400 p-1 pt-0 pb-0 outline-none rounded-lg uppercase'>
+                        <button onClick={() => handleconfirmarmotivopausa(motivosSeleccionados)} className='absolute bottom-2 right-2 m-auto bg-cyan-400 p-1 outline-none rounded-md uppercase text-slate-50 font-extrabold text-xs'>
                             <span className='text-xs text-white'>confirmar</span>
                         </button>
                     )}
@@ -102,4 +102,28 @@ function ModalCambioStatus() {
 }
 
 
-export default ModalCambioStatus; 
+
+export function ConfirmacionDialog({ mensaje,status}) {
+    const {
+        handleclosemodal,
+        handleConfirmar,
+        handleCancelar,
+    } = useContext(AuthContext)
+    console.log(status)
+    return (
+        status ? (
+            <div className='fixed top-0 left-0 z-20 w-full h-full flex items-center justify-center animate-jump-in'>
+                <div className='absolute top-0 left-0 w-full h-full bg-black opacity-70 animate-jump-in'></div>
+                <div className='relative w-11/12 h-2/5 z-10 bg-white p-4 rounded-lg shadow-md animate-jump-in'>
+                    <button className='absolute right-3 top-1' onClick={() => handleclosemodal()}>
+                        <h1 className='text-lg text-cyan-600'>x</h1>
+                    </button>
+                    <p className='text-xl text-slate-800 font-extrabold mt-8'>¿Estás seguro de realizar la acción de {mensaje}?</p>
+                    <button className='absolute bottom-2 right-2 m-auto bg-cyan-400 p-1 outline-none rounded-md uppercase text-slate-50 font-extrabold text-xs' onClick={()=>handleConfirmar()}>Confirmar</button>
+                    <button className='absolute bottom-2 right-24 m-auto  p-1  outline-none uppercase text-slate-950 font-extrabold text-xs' onClick={()=>handleCancelar()}>Cancelar</button>
+                </div>
+            </div>
+        ): null
+    );
+  };
+

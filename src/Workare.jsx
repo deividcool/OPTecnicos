@@ -3,7 +3,6 @@ import Mechanic from './assets/Mechanic.svg'
 import { AuthContext } from './context/AuthContext';
 import CardServices from './componentes/Card';
 import './componentes/stylecard.css';
-import ModalCambioStatus from './componentes/Modales';
 
 function Workarea() {
     const {
@@ -34,15 +33,15 @@ function Workarea() {
     console.log(operaciones)
 
     return (
-        <main className='flex flex-col h-auto'>
-            <header className='flex h-12 z-10 w-screen justify-evenly items-center'>
+        <main className='flex flex-col h-auto w-screen md:w-[450px] bg-slate-50'>
+            <header className='flex w-screen h-12 justify-evenly items-center shadow-md top-0 fixed bg-slate-50 md:w-[450px] z-20'>
                 <img src={Mechanic} className="w-6 h-6" />
                 <h1 className="text-xl font-bold text-neutral-800 uppercase tracking-tighter">
                     Operaciones Tecnico
                 </h1>
             </header>
-            <main className='w-full justify-start flex flex-col pt-10 '>
-                <aside className='flex p-2 flex-col w-screen'>
+            <main className='w-full justify-start flex flex-col z-10 pt-10 md:w-[450px]'>
+                <aside className='flex p-2 flex-col '>
                     <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Informacion Tecnico</h2>
                     <div className='h-px w-20 bg-gray-800'></div>
                     <ul className='w-full columns-2 m-2'>
@@ -55,7 +54,7 @@ function Workarea() {
 
 
                 </aside>
-                <aside className='flex p-2 pt-0 flex-col w-screen'>
+                <aside className='flex p-2 pt-0 flex-col w-screen md:w-[450px]'>
                     <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Informacion Cliente</h2>
                     <div className='h-px w-20 bg-gray-800'></div>
                     <ul className='w-full columns-2  flex-1 justify-center items-center p-2'>
@@ -68,7 +67,7 @@ function Workarea() {
                         <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>aseguradora:</strong> {aseguradora.replace(/%20/g, " ")}</li>
                     </ul>
                 </aside>
-                <section className='flex pt-0 flex-col w-screen bg-white'>
+                <section className='flex pt-0 pl-2 pr-2 flex-col bg-white w-screen md:w-[450px]'>
                     <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Área Laboral - Numero Ordenes {num_operaciones} </h2>
                     <div className='h-px w-20 bg-gray-800'></div>
                     {loadinOperaciones ? (

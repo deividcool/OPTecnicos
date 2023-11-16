@@ -53,7 +53,7 @@ function CardServices({operaciones, nombre_operacion, buttonstatus, status_opera
     return (
         <div className="card">
             <button className="mail">
-                <span>Orden. {operaciones}</span>
+            <span className="status-actual"><strong>ESTADO:</strong> {status_operacion}</span>
             </button>
             <div className="profile-pic">
                 {
@@ -68,9 +68,8 @@ function CardServices({operaciones, nombre_operacion, buttonstatus, status_opera
             </div>
             <div className="bottom">
                 <div className="content">
-                    <span className="status-actual"><strong>ESTADO:</strong> {status_operacion}</span>
                     {contar_tiempo == "true" ? (<span className="status-time"><strong>Tiempo Transcurrido:</strong> {remainingTime.slice(0, -7)}</span>) : null}
-                    <span className="name" style={{ marginTop: contar_tiempo === "true" ? '2px' : '40px' }}>PRACTICA A REALIZAR</span>
+                    <span className="name" style={{ marginTop: contar_tiempo === "true" ? '15px' : '30px' }}>PRACTICA A REALIZAR</span>
                     <span className="about-me">{nombre_operacion}</span>
                 </div>
                 <div className="bottom-bottom">

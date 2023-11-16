@@ -27,6 +27,9 @@ export const AuthProvider = ({ children }) => {
     const [ num_operaciones , setNumeroOperaciones] = useState('');
     const [loading, setLoading] = useState(false);
     const [isloadingButton, setIsloadingButton] = useState(false);
+    const [ nombreseleccionado ,setNombreSeleccionado]= useState("");
+    const [ confirmaciondialog, setConfirmacionDialog]=useState(false);
+    
 
     
 
@@ -132,65 +135,19 @@ export const AuthProvider = ({ children }) => {
       };
 
 
-    const handleidbutton = (id , orden ) => {
+    const handleidbutton = (id , orden, name ) => {
         console.log(id)
         console.log(orden)
         console.log(cedula)
         console.log(codigo)
         console.log(registro)
-        setIsloadingButton(true)
+        setNombreSeleccionado(name)
         setIdButtonAccion(id)
         setIdOrden(orden)
-        axios
-            .post(`${BASE_URL}`, {
-                tag:"accion",
-                identificacion: cedula,
-                codigo: codigo,
-                orden:registro,
-                actividad: orden,
-                accion:id,
-            })
-            .then(res => {
-                if (res.data && res.data.confirmar == 'true'){
-                    setAbrirModal(true);
-                    setContentModal(res.data);
-                    setIsloadingButton(false)
-                }else{
-                    axios
-                    .post(`${BASE_URL}`, {
-                        tag:"operaciones",
-                        identificacion: cedula,
-                        codigo: codigo,
-                        orden:registro,
-                    })
-                    .then(res => {
-                        if(res.data && res.data.resultado == 'ok'){
-                            setInfotecnico(res.data.tecnico)
-                            const operacioness = [];
-        
-                            for (let i = 0; i < res.data.operaciones.length; i++) {
-                            const operacion = res.data.operaciones[i];
-                            operacioness.push(operacion);
-                            }
-                            setOperaciones(operacioness)
-                            setIsloadingButton(false)
-                        }
-                    })
-                    .catch(e => {
-                        toast.error('El tecnico no existe o no está asociado al taller de la OT suministrada')
-                        console.log("error conexiones " + e);
-                    })
-                }
-                
-                if(res.data && res.data.resultado == '0'){
-                    toast.error(res.data.mensaje)
-                    console.log(res.data);
-                }
-            })
-            .catch(e => {
-                console.log("error conexiones " + e);
-            })
-        
+        setConfirmacionDialog(true)
+
+   
+           
     }
 
     const handleconfirmarmotivopausa = (motivoSeleccionado) => {
@@ -250,9 +207,69 @@ export const AuthProvider = ({ children }) => {
     }
 
     const handleclosemodal = () => {
+        setNombreSeleccionado("")
+        setConfirmacionDialog(false)
         setAbrirModal(false);
         setContentModal([]);
     }
+
+    const handleConfirmar = () => {
+        setConfirmacionDialog(false)
+        setIsloadingButton(true)
+        axios
+            .post(`${BASE_URL}`, {
+                tag:"accion",
+                identificacion: cedula,
+                codigo: codigo,
+                orden:registro,
+                actividad: idorden,
+                accion:idbuttonAccion,
+            })
+            .then(res => {
+                if (res.data && res.data.confirmar == 'true'){
+                    setAbrirModal(true);
+                    setContentModal(res.data);
+                    setIsloadingButton(false)
+                }else{
+                    axios
+                    .post(`${BASE_URL}`, {
+                        tag:"operaciones",
+                        identificacion: cedula,
+                        codigo: codigo,
+                        orden:registro,
+                    })
+                    .then(res => {
+                        if(res.data && res.data.resultado == 'ok'){
+                            setInfotecnico(res.data.tecnico)
+                            const operacioness = [];
+        
+                            for (let i = 0; i < res.data.operaciones.length; i++) {
+                            const operacion = res.data.operaciones[i];
+                            operacioness.push(operacion);
+                            }
+                            setOperaciones(operacioness)
+                            setIsloadingButton(false)
+                        }
+                    })
+                    .catch(e => {
+                        toast.error('El tecnico no existe o no está asociado al taller de la OT suministrada')
+                        console.log("error conexiones " + e);
+                    })
+                }
+                
+                if(res.data && res.data.resultado == '0'){
+                    toast.error(res.data.mensaje)
+                    console.log(res.data);
+                }
+            })
+            .catch(e => {
+                console.log("error conexiones " + e);
+            }) 
+      };
+    
+      const handleCancelar = () => {
+        setConfirmacionDialog(false)
+      };
 
     return (
         <AuthContext.Provider
@@ -276,6 +293,8 @@ export const AuthProvider = ({ children }) => {
                 num_operaciones,
                 loading,
                 isloadingButton,
+                nombreseleccionado,
+                confirmaciondialog,
                 handleidbutton,
                 setCedula,
                 setCodigo,
@@ -283,7 +302,9 @@ export const AuthProvider = ({ children }) => {
                 handleCodigoChange,
                 handleCedulaChange,
                 handleconfirmarmotivopausa,
+                handleConfirmar,
                 handleclosemodal,
+                handleCancelar
             }}>
             {children}
         </AuthContext.Provider>

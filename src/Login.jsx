@@ -43,7 +43,7 @@ function Login() {
                 <div className='flex justify-center items-center -m-1 -mb-1'>
                     <img src={Logoconse} className='h-20 w-full'/>
                 </div>
-                <ul className='w-full columns-2 bg-slate-200 flex-1 justify-center items-center p-2'>
+                <ul className='w-full columns-2 bg-slate-200 h-48 md:w-96 justify-center items-center p-2'>
                     <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	'> <strong>propietario:</strong> {propietario.replace(/%20/g, " ")}</li>
                     <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis'> <strong>vin:</strong> {vin}</li>
                     <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	'> <strong>sede:</strong> {sede.replace(/%20/g, " ")}</li>
@@ -53,7 +53,7 @@ function Login() {
                     <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>modelo:</strong> {modelo.replace(/%20/g, " ")}</li>
                     <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>aseguradora:</strong> {aseguradora.replace(/%20/g, " ")}</li>
                 </ul>
-                <div className='flex flex-1 flex-col w-full'>
+                <div className='flex flex-1 flex-col w-full md:w-96'>
                     <div className='flex w-full h-16 mt-px rounded-md pl-2 pr-2 flex-col justify-evenly'>
                         <h4 className='text-sm text-neutral-800 tracking-tighter capitalize'>Cedula</h4>
                         <input
@@ -92,7 +92,7 @@ function Login() {
                                     <path d="M12 2.99988V5.99988M12 20.9999V17.9999M4.20577 16.4999L6.80385 14.9999M21 11.9999H18M16.5 19.7941L15 17.196M3 11.9999H6M7.5 4.20565L9 6.80373M7.5 19.7941L9 17.196M19.7942 16.4999L17.1962 14.9999M4.20577 7.49988L6.80385 8.99988" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             ) : (
-                                <span>INGRESAR</span>
+                                <span className='text-lg tracking-tighter text-slate-50 font-bold'>INGRESAR</span>
                             )}
 
                         </button>
