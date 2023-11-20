@@ -68,7 +68,7 @@ function Workarea() {
                     </ul>
                 </aside>
                 <section className='flex pt-0 pl-2 pr-2 flex-col bg-white w-screen md:w-[450px]'>
-                    <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Área Laboral - Numero Ordenes {num_operaciones} </h2>
+                    <h2 className='font-bold tracking-tighter text-lg text-gray-800'>Área Laboral - Numero Operaciones {num_operaciones} </h2>
                     <div className='h-px w-20 bg-gray-800'></div>
                     {loadinOperaciones ? (
                         <div className="horizScroll">
