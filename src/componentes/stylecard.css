@@ -148,6 +148,7 @@
   
   .card .bottom .bottom-bottom .social-links-container svg {
     height: 1.7rem;
+    width: 1.7rem;
     fill: white;
     filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
   }

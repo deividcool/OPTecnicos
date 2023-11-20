@@ -135,18 +135,19 @@ export const AuthProvider = ({ children }) => {
       };
 
 
-    const handleidbutton = (id , orden, name ) => {
+    const handleidbutton = (id , orden, nombre ) => {
         console.log(id)
         console.log(orden)
         console.log(cedula)
         console.log(codigo)
         console.log(registro)
-        setNombreSeleccionado(name)
+        console.log(nombre)
+        setNombreSeleccionado(nombre)
         setIdButtonAccion(id)
         setIdOrden(orden)
         setConfirmacionDialog(true)
 
-   
+       
            
     }
 
@@ -207,7 +208,9 @@ export const AuthProvider = ({ children }) => {
     }
 
     const handleclosemodal = () => {
-        setNombreSeleccionado("")
+        setNombreSeleccionado('');
+        setIdButtonAccion(null);
+        setIdOrden('');
         setConfirmacionDialog(false)
         setAbrirModal(false);
         setContentModal([]);
@@ -226,6 +229,8 @@ export const AuthProvider = ({ children }) => {
                 accion:idbuttonAccion,
             })
             .then(res => {
+
+                console.log(res)
                 if (res.data && res.data.confirmar == 'true'){
                     setAbrirModal(true);
                     setContentModal(res.data);
