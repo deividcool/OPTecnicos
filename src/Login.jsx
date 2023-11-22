@@ -44,14 +44,11 @@ function Login() {
                     <img src={Logoconse} className='h-20 w-full'/>
                 </div>
                 <ul className='w-full columns-2 bg-slate-200 h-48 md:w-96 justify-center items-center p-2'>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	'> <strong>propietario:</strong> {propietario.replace(/%20/g, " ")}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis'> <strong>vin:</strong> {vin}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	'> <strong>sede:</strong> {sede.replace(/%20/g, " ")}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	'> <strong>orden:</strong> {orden}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>placa:</strong> {placa}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>celular:</strong> {celular}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>modelo:</strong> {modelo.replace(/%20/g, " ")}</li>
-                    <li className='text-xs text-gray-600 mt-px capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>aseguradora:</strong> {aseguradora.replace(/%20/g, " ")}</li>
+                    <li className='text-xs text-gray-600 mt-px mb-2 capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>placa:</strong> {placa}</li>
+                    <li className='text-xs text-gray-600 mt-px mb-2 capitalize overflow-hidden text-ellipsis	'> <strong>orden:</strong> {orden}</li>
+                    <li className='text-xs text-gray-600 mt-px mb-2 capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>modelo:</strong> {modelo.replace(/%20/g, " ")}</li>                    
+                    <li className='text-xs text-gray-600 mt-px mb-2 capitalize overflow-hidden text-ellipsis'> <strong>vin:</strong> {vin}</li>                    
+                    <li className='text-xs text-gray-600 mt-px mb-2 capitalize overflow-hidden text-ellipsis	max-h-11'> <strong>aseguradora:</strong> {aseguradora.replace(/%20/g, " ")}</li>
                 </ul>
                 <div className='flex flex-1 flex-col w-full md:w-96'>
                     <div className='flex w-full h-16 mt-px rounded-md pl-2 pr-2 flex-col justify-evenly'>
